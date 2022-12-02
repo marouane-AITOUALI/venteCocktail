@@ -11,7 +11,7 @@
     <div class="header">
         <nav id="bandeau">
         <img src="./Ressources/logo_cocktail.png" alt="" class="imgLogoCocktail">
-            <a href="#" class="logo">COCKTAILS</a>
+            <a href="index.php" class="logo">COCKTAILS</a>
 
             <input id="recherche" class="recherche" onkeyup="" type="text"
                 name="recherche" placeholder="Rechercher dans le site">
@@ -47,16 +47,18 @@
     <div class="contenu">
         <img class="image" src="Photos/Builder.jpg"  alt="">
         <div class="texte">
-            <h1>Ingredients</h1>
+            <div class="description">Builder</div>
+            <h2>Ingredients</h2>
             <li>1 concombre</li>
             <li>1 citron</li>
             <li>1 cuillère à soupe de sucre</li>
             <li>3 glaçons</li><br>
-            <h1>Preparation</h1>
+            <h2>Preparation</h2>
             <li>Mixer le concombre dans la centrifugeuse, ajouter le jus du citron, le sucre et les glaçons. Servir dans un verre décoré d'une tranche de citron.</li>
+            <a href="#" id="boutonAjouterPanier" class="boutonAjouterPanier">Ajouter au panier</a>
         </div>
     </div>
 
-    <script type="text/javascript" src="fonctionsCocktails.js"></script>
+    <script type="text/javascript" src="fonctionsElements.js"></script>
 </body>
 </html>

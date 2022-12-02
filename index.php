@@ -20,7 +20,15 @@
                     <li>
                         <a href="#" id="boutonCocktails">Aliment ▼</a>
                         <ul class="sous-menu">
-                            <li><a href="#">Fruit</a></li>
+                            <li><a href="#">Fruit</a>
+                                <ul class="sous-menu-fruit">
+                                    <li><a href="#">Agrumes</a></li>
+                                    <li><a href="#">Coque</a></li>
+                                    <li><a href="#">Baies</a></li>
+                                    <li><a href="#">Fruits exotiques</a></li>
+                                    <li><a href="#">Fruits rouges</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#">Assaisonnement</a></li>
                             <li><a href="#">Liquide</a></li>
                             <li><a href="#">Noix et graine</a></li>
@@ -34,10 +42,10 @@
                             <img src="./Ressources/logo_compte.png" alt="" class="imgLogoCompte">
                         </a>
                         <ul class="sous-menu">
-                            <li><a href="#">Se connecter</a></li>
+                            <li><a href="login.php">Se connecter</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" id="boutonPanier">Panier
+                    <li><a href="panier.php" id="boutonPanier">Panier
                         <img src="./Ressources/logo_like.png" alt="" class="imgLogoLike">
                     </a></li>
                 </ul>
@@ -60,11 +68,167 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Black_velvet.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Black Velvet
+                <li>Fraise</li>
+                <li>Limonade</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Bora_bora.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Bora Bora
+                <li>Biere</li>
+                <li>Test</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Bloody_mary.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Bloody mary
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Coconut_kiss.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Coconut kiss
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Caipirinha.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Caipirinha
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Mojito.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Mojito
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Cuba_libre.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Cuba libre
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Le_vandetta.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Le vandetta
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Frosty_lime.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Frosty lime
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Sangria_sans_alcool.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Sangria sans alcool
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Screwdriver.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Screwdriver
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Shoot_up.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Shoot up
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Raifortissimo.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Raifortissimo
+                <li>Biere</li>
+                <li>Champagne</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Tipunch.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Tipunch
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -84,11 +248,35 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Black_velvet.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Black Velvet
+                <li>Fraise</li>
+                <li>Limonade</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Bora_bora.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Bora Bora
+                <li>Biere</li>
+                <li>Test</li>
+            </div>
+        </div>
+
+        <div class="grid-item1">
+            <a class="a-img-txt" href="element.php">
+                <img class="imgVignette" src="Photos/Bloody_mary.jpg"  alt="En savoir plus">
+                <span class="a-txt">En savoir plus</span>
+            </a>
+            <div class="text">
+                Cocktail Bloody mary
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -96,11 +284,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Coconut_kiss.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Coconut kiss
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -108,11 +296,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Caipirinha.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Caipirinha
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -120,11 +308,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Mojito.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Mojito
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -132,11 +320,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Cuba_libre.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Cuba libre
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -144,11 +332,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Le_vandetta.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Le vandetta
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -156,11 +344,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Frosty_lime.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Frosty lime
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -168,11 +356,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Sangria_sans_alcool.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Sangria sans alcool
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -180,11 +368,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Screwdriver.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Screwdriver
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -192,11 +380,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Shoot_up.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Shoot up
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -204,11 +392,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Raifortissimo.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Raifortissimo
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>
@@ -216,11 +404,11 @@
 
         <div class="grid-item1">
             <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
+                <img class="imgVignette" src="Photos/Tipunch.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
             </a>
             <div class="text">
-                Cocktail Builder
+                Cocktail Tipunch
                 <li>Biere</li>
                 <li>Champagne</li>
             </div>

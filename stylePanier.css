@@ -125,38 +125,44 @@ nav.sticky{
     width: 20%;
     padding: 10px;
     border-radius: 20px;
-  }
+}
 
 
-  /*Contenu*/
+/*Contenu*/ 
+  
 .contenu{
-    padding-top: 2%;
-    position: relative;
+    margin-top: 4%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin-left: 100px;
+    margin-right: 100px;
+    grid-gap: 40px;
+    justify-items: left;
+    align-items: left;
+    height: 250px;
+    width: auto;
+}
+
+.grid-item{
     display: flex;
+    align-items: center;
+    justify-content: left;
+    border: solid;
+    border-radius: 5px;
+    width: 100%;
 }
 
-.texte{
-    font-size: 24px;
+.imgVignette{
+    height: 243px;
+    width: auto;
 }
 
-.image{
-    height: auto;
-    width: 20%;
+.text{
+    margin-left: 20px;
 }
 
-.description{
-    font-size: 68px;
-}
-
-.texte{
-    font-size: 20px;
-}
-
-
-/* Bouton Ajouter au panier*/
-
-.boutonAjouterPanier{
-    position: absolute;
+.boutonRetirer{
+    position: relative;
     color: rgb(0, 0, 0);
     background: rgb(255, 65, 65);
     font-weight: 400;
@@ -165,8 +171,24 @@ nav.sticky{
     border-radius: 5px;
     text-decoration: none;
     transition: 0.5s ease-in-out;
+    left: 20px;
 }
-.boutonAjouterPanier:hover{
+.boutonRetirer:hover{
     background: rgb(56, 113, 218);
     color: rgb(0, 0, 0);
+}
+
+
+/*Transition*/
+
+.reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+  
+.reveal.active{
+    transform: translateY(0);
+    opacity: 1;
 }
