@@ -1,0 +1,201 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: white;
+    scroll-behavior: smooth;
+}
+
+.header{
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    /*z-index: 10;*/
+}
+
+.header::before{
+    content: '';
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.imgLogoCocktail{
+    position: relative;
+    max-width : 2%;
+    height : 100%;
+}
+
+.imgLogoCompte{
+    position: absolute;
+    margin-left: 1%;
+    max-width : 6%;
+    height : auto;
+}
+
+.imgLogoLike{
+    position: absolute;
+    margin-left: 1%;
+    max-width : 6%;
+    height : auto;
+}
+
+nav{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: rgb(255, 65, 65);
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(Ressources/Indited.ttf);
+}
+
+nav .logo{
+    position: absolute; /*Met le text tout à gauche*/
+    left: 3%;
+    font-size: 300%;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-family: myFont;
+}
+
+nav .navigation{
+    position: relative; /*Pour placer les boutons horizontalement*/
+    display: flex;
+}
+
+nav .navigation li{
+    list-style: none; /*Pour ne pas afficher de point*/
+}
+
+nav .navigation li a{
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    margin-left: 10px;
+    padding: 8px 15px;
+    padding-right: 40px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+}
+
+nav .navigation li a:active,
+nav .navigation li a:hover{
+    background: rgb(56, 113, 218);
+    color: rgb(0, 0, 0);
+}
+
+.sous-menu{
+    display: none;
+}
+
+nav > ul li:hover .sous-menu{
+    display: flex; /*affichage sous menu*/
+}
+
+nav.sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+/*Recherche*/
+
+.recherche{
+    position: absolute;
+    left: 40%;
+    height: auto;
+    width: 20%;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+
+/*Contenu*/
+
+.contenu{
+    margin-top: 4%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 10px;
+    grid-gap: 40px;
+    justify-items: center;
+    align-items: center;
+}
+
+.grid-item1 {
+    box-shadow: 5px 5px 5px black;
+    background: rgb(241, 238, 238);
+    text-align: left;
+    /*border: black 1px solid;*/
+    min-width: 50%;
+    min-height: 100%;
+}
+
+.imgVignette{
+    width: 100%;
+    height: 100%; /*Ajuste la taille de la photo dans la vignette*/
+}
+
+.a-img-txt{
+    display:grid; 
+}
+
+/* les enfants se superposent */
+.a-img-txt>*{
+    grid-area:1/1/-1/-1; 
+    /* raccourci pour grid-row et grid-column */
+}
+  
+  /* le texte */
+  .a-txt{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size: 30px;
+    color:rgb(0, 0, 0);
+    opacity:0;
+    transition:opacity .8s;
+  }
+  
+  /* le survol */
+  .a-txt:hover{
+    opacity:1;
+  }
+  .a-img-txt:hover .imgVignette{
+    transition: .8s;
+    -webkit-filter : blur(5px); 
+    filter : blur(5px);
+  }
+
+
+/*Transition*/
+
+.reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+  
+.reveal.active{
+    transform: translateY(0);
+    opacity: 1;
+}

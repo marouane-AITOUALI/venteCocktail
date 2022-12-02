@@ -1,0 +1,145 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: white;
+    scroll-behavior: smooth;
+}
+
+.header{
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    /*z-index: 10;*/
+}
+
+.header::before{
+    content: '';
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.imgLogoCocktail{
+    position: relative;
+    max-width : 2%;
+    height : 100%;
+}
+
+.imgLogoCompte{
+    position: absolute;
+    margin-left: 1%;
+    max-width : 6%;
+    height : auto;
+}
+
+.imgLogoLike{
+    position: absolute;
+    margin-left: 1%;
+    max-width : 6%;
+    height : auto;
+}
+
+nav{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: rgb(255, 65, 65);
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(Ressources/Indited.ttf);
+}
+
+nav .logo{
+    position: absolute; /*Met le text tout à gauche*/
+    left: 3%;
+    font-size: 300%;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-family: myFont;
+}
+
+nav .navigation{
+    position: relative; /*Pour placer les boutons horizontalement*/
+    display: flex;
+}
+
+nav .navigation li{
+    list-style: none; /*Pour ne pas afficher de point*/
+}
+
+nav .navigation li a{
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    margin-left: 10px;
+    padding: 8px 15px;
+    padding-right: 40px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+}
+
+nav .navigation li a:active,
+nav .navigation li a:hover{
+    background: rgb(56, 113, 218);
+    color: rgb(0, 0, 0);
+}
+
+.sous-menu{
+    display: none;
+}
+
+nav > ul li:hover .sous-menu{
+    display: flex; /*affichage sous menu*/
+}
+
+nav.sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+/*Recherche*/
+
+.recherche{
+    position: absolute;
+    left: 40%;
+    height: auto;
+    width: 20%;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+
+  /*Contenu*/
+.contenu{
+    padding-top: 5%;
+    position: relative;
+    display: flex;
+}
+
+.texte{
+    font-size: 24px;
+}
+
+.image{
+    height: auto;
+    width: 20%;
+}
