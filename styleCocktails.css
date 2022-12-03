@@ -14,9 +14,9 @@ html {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     background: transparent;
-    /*z-index: 10;*/
+    z-index: 2;
 }
 
 .header::before{
@@ -50,13 +50,15 @@ html {
 
 nav{
     position: relative;
+    z-index: 1;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 10px;
+    height: 60px;
+    padding-top: 10px;
     display: flex;
     justify-content: space-between;
-    text-align: center;
+    text-align: left;
     background-color: rgb(255, 65, 65);
 }
 
@@ -84,14 +86,13 @@ nav .navigation li{
 }
 
 nav .navigation li a{
-    display: inline-block;
+    display: block;
     color: rgb(0, 0, 0);
     font-weight: 400;
-    margin-left: 10px;
     padding: 8px 15px;
     padding-right: 40px;
-    border-radius: 5px;
     text-decoration: none;
+    width: 100%;
     transition: 0.5s ease-in-out;
 }
 
@@ -110,11 +111,20 @@ nav .navigation li a:hover{
 }
 
 nav > ul li:hover .sous-menu{
-    display: flex; /*affichage sous menu*/
+    display: block; /*affichage sous menu*/
+    height: fit-content;
+    width: fit-content;
+    margin-top: 11px;
+    background-color: rgb(255, 65, 65);
+    border-top: 2px solid #ffffff;
 }
 
 nav > ul li .sous-menu li:hover .sous-menu-fruit{
-    display: block; /*affichage sous menu*/
+    display: block; /*affichage sous menu fruit*/
+    height: fit-content;
+    width: fit-content;
+    float: left;
+    border-right: 2px solid #ffffff;
 }
 
 nav.sticky{
@@ -139,6 +149,7 @@ nav.sticky{
 /*Contenu*/
 
 .contenu{
+    z-index: 1;
     margin-top: 4%;
     display: grid;
     grid-template-columns: repeat(6, 1fr);

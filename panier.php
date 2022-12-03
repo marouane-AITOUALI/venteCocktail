@@ -46,7 +46,7 @@
 
     <div class="contenu">
 
-        <div class="grid-item">
+        <div class="grid-item reveal">
             <img class="imgVignette" src="Photos/Builder.jpg"  alt="">
             <div class="text">
                 Cocktail Builder
@@ -56,7 +56,7 @@
             <a href="" class="boutonRetirer">Retirer</a>
         </div>
 
-        <div class="grid-item">
+        <div class="grid-item reveal">
             <img class="imgVignette" src="Photos/Black_velvet.jpg"  alt="">
             <div class="text">
                 Cocktail Builder
@@ -66,7 +66,7 @@
             <a href="" class="boutonRetirer">Retirer</a>
         </div>
 
-        <div class="grid-item">
+        <div class="grid-item reveal">
             <img class="imgVignette" src="Photos/Bloody_mary.jpg"  alt="">
             <div class="text">
                 Cocktail Builder
@@ -76,7 +76,7 @@
             <a href="" class="boutonRetirer">Retirer</a>
         </div>
 
-        <div class="grid-item">
+        <div class="grid-item reveal">
             <img class="imgVignette" src="Photos/Bora_bora.jpg"  alt="">
             <div class="text">
                 Cocktail Builder
@@ -86,7 +86,7 @@
             <a href="" class="boutonRetirer">Retirer</a>
         </div>
 
-        <div class="grid-item">
+        <div class="grid-item reveal">
             <img class="imgVignette" src="Photos/Caipirinha.jpg"  alt="">
             <div class="text">
                 Cocktail Builder
@@ -96,7 +96,7 @@
             <a href="" class="boutonRetirer">Retirer</a>
         </div>
 
-        <div class="grid-item">
+        <div class="grid-item reveal">
             <img class="imgVignette" src="Photos/Coconut_kiss.jpg"  alt="">
             <div class="text">
                 Cocktail Builder
@@ -106,7 +106,7 @@
             <a href="" class="boutonRetirer">Retirer</a>
         </div>
 
-        <div class="grid-item">
+        <div class="grid-item reveal">
             <img class="imgVignette" src="Photos/Margarita.jpg"  alt="">
             <div class="text">
                 Cocktail Builder
@@ -116,7 +116,7 @@
             <a href="" class="boutonRetirer">Retirer</a>
         </div>
 
-        <div class="grid-item">
+        <div class="grid-item reveal">
             <img class="imgVignette" src="Photos/Tequila_sunrise.jpg"  alt="">
             <div class="text">
                 Cocktail Builder
@@ -126,7 +126,7 @@
             <a href="" class="boutonRetirer">Retirer</a>
         </div>
 
-        <div class="grid-item">
+        <div class="grid-item reveal">
             <img class="imgVignette" src="Photos/Tipunch.jpg"  alt="">
             <div class="text">
                 Cocktail Builder

@@ -9,7 +9,8 @@
 </head>
 <body>
     <div class="header">
-        <nav id="bandeau">
+        
+        <nav id="bandeau" role="navigation">
         <img src="./Ressources/logo_cocktail.png" alt="" class="imgLogoCocktail">
             <a href="#" class="logo">COCKTAILS</a>
 
@@ -54,7 +55,7 @@
 
     <div class="contenu">
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -66,7 +67,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Black_velvet.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -78,7 +79,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Bora_bora.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -90,7 +91,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Bloody_mary.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -102,7 +103,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Coconut_kiss.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -114,7 +115,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Caipirinha.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -126,7 +127,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Mojito.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -138,7 +139,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Cuba_libre.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -150,7 +151,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Le_vandetta.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -162,7 +163,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Frosty_lime.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -174,7 +175,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Sangria_sans_alcool.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -186,7 +187,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Screwdriver.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -198,7 +199,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Shoot_up.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -210,7 +211,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Raifortissimo.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -222,7 +223,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Tipunch.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -234,7 +235,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -246,7 +247,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Black_velvet.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -258,7 +259,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Bora_bora.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -270,7 +271,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Bloody_mary.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -282,7 +283,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Coconut_kiss.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -294,7 +295,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Caipirinha.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -306,7 +307,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Mojito.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -318,7 +319,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Cuba_libre.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -330,7 +331,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Le_vandetta.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -342,7 +343,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Frosty_lime.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -354,7 +355,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Sangria_sans_alcool.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -366,7 +367,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Screwdriver.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -378,7 +379,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Shoot_up.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -390,7 +391,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Raifortissimo.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
@@ -402,7 +403,7 @@
             </div>
         </div>
 
-        <div class="grid-item1">
+        <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">
                 <img class="imgVignette" src="Photos/Tipunch.jpg"  alt="En savoir plus">
                 <span class="a-txt">En savoir plus</span>
