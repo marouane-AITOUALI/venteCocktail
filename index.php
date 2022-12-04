@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="header">
-        
         <nav id="bandeau" role="navigation">
         <img src="./Ressources/logo_cocktail.png" alt="" class="imgLogoCocktail">
             <a href="#" class="logo">COCKTAILS</a>
