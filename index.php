@@ -8,20 +8,20 @@
     <title>Cocktails</title>
 </head>
 <body>
-    <div class="header">
-        <nav id="bandeau" role="navigation">
+    <div id="bandeau" class="bandeau">
         <img src="./Ressources/logo_cocktail.png" alt="" class="imgLogoCocktail">
             <a href="#" class="logo">COCKTAILS</a>
 
             <input id="recherche" class="recherche" onkeyup="" type="text"
                 name="recherche" placeholder="Rechercher dans le site">
 
-                <ul id="navigation" class="navigation">
+                <ul id="menu" class="menu">
                     <li>
-                        <a href="#" id="boutonCocktails">Aliment ▼</a>
-                        <ul class="sous-menu">
-                            <li><a href="#">Fruit</a>
-                                <ul class="sous-menu-fruit">
+                        <a href="#">Aliment</a>
+                        <ul id="sous-menu" class="sous-menu">
+                            <li>
+                                <a href="#">◀ Fruit</a>
+                                <ul id="sous2-menu" class="sous2-menu">
                                     <li><a href="#">Agrumes</a></li>
                                     <li><a href="#">Coque</a></li>
                                     <li><a href="#">Baies</a></li>
@@ -29,30 +29,37 @@
                                     <li><a href="#">Fruits rouges</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Assaisonnement</a></li>
-                            <li><a href="#">Liquide</a></li>
-                            <li><a href="#">Noix et graine</a></li>
-                            <li><a href="#">Oeuf</a></li>
-                            <li><a href="#">Aliments divers</a></li>
-                            <li><a href="#">Produit laitier</a></li>
+                            <li><a href="#">◀ Assaisonnement</a></li>
+                            <li><a href="#">◀ Liquide</a></li>
+                            <li><a href="#">◀ Noix et graine</a></li>
+                            <li><a href="#">◀ Oeuf</a></li>
+                            <li><a href="#">◀ Aliments divers</a></li>
+                            <li><a href="#">◀ Produit laitier</a></li>
                         </ul>
                     </li>
+
                     <li>
                         <a href="#" id="boutonCompte">Compte
                             <img src="./Ressources/logo_compte.png" alt="" class="imgLogoCompte">
                         </a>
-                        <ul class="sous-menu">
+                        <ul id="sous-menu" class="sous-menu">
                             <li><a href="login.php">Se connecter</a></li>
                         </ul>
                     </li>
-                    <li><a href="panier.php" id="boutonPanier">Panier
-                        <img src="./Ressources/logo_like.png" alt="" class="imgLogoLike">
-                    </a></li>
+
+                    <li>
+                        <a href="panier.php" id="boutonPanier">Panier
+                            <img src="./Ressources/logo_like.png" alt="" class="imgLogoLike">
+                        </a>
+                    </li>
                 </ul>
-        </nav>
     </div>
 
     <div class="contenu">
+
+        <?php
+            //include 'creationBdd.php';
+        ?>    
 
         <div class="grid-item1 reveal">
             <a class="a-img-txt" href="element.php">

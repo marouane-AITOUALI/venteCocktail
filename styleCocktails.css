@@ -9,7 +9,7 @@ html {
     scroll-behavior: smooth;
 }
 
-.header{
+.bandeau{
     position: absolute; 
     top: 0;
     left: 0;
@@ -19,7 +19,7 @@ html {
     z-index: 2;
 }
 
-.header::before{
+.bandeau::before{
     content: '';
     position: relative;
     top: 0;
@@ -29,9 +29,11 @@ html {
 }
 
 .imgLogoCocktail{
-    position: relative;
+    position: absolute;
     max-width : 2%;
-    height : 100%;
+    height : auto;
+    margin-top: -3px;
+    margin-left: 10px;
 }
 
 .imgLogoCompte{
@@ -48,7 +50,7 @@ html {
     height : auto;
 }
 
-nav{
+.bandeau{
     position: relative;
     top: 0;
     left: 0;
@@ -66,7 +68,7 @@ nav{
     src: url(Ressources/Indited.ttf);
 }
 
-nav .logo{
+.bandeau .logo{
     position: absolute; /*Met le text tout à gauche*/
     left: 3%;
     font-size: 300%;
@@ -75,16 +77,19 @@ nav .logo{
     font-family: myFont;
 }
 
-nav .navigation{
-    position: relative; /*Pour placer les boutons horizontalement*/
+
+/*Menu*/
+
+#menu {
+    position: relative;
     display: flex;
 }
 
-nav .navigation li{
-    list-style: none; /*Pour ne pas afficher de point*/
+#menu li {
+    list-style: none;
 }
 
-nav .navigation li a{
+#menu a {
     display: block;
     color: rgb(0, 0, 0);
     font-weight: 400;
@@ -95,8 +100,86 @@ nav .navigation li a{
     transition: 0.5s ease-in-out;
 }
 
-nav .navigation li a:active,
-nav .navigation li a:hover{
+
+/*Sous menu*/
+
+#menu li:hover > a {
+    background: rgb(56, 113, 218);
+    color: rgb(0, 0, 0);
+}
+
+#menu li .sous-menu {
+    position: absolute;
+    display: none;
+}
+
+#menu li:hover .sous-menu {
+    display: block;
+    margin-top: 12px;
+    background-color: rgb(255, 65, 65);
+    border-top: 2px solid #ffffff;
+}
+
+.sous-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.sous-menu a:hover {
+    background: rgb(56, 113, 218);
+}
+
+
+/*Sous sous menu*/
+
+.sous2-menu li:hover > a {
+    background: #ccc;
+}
+
+.sous-menu li .sous2-menu{
+    position: absolute;
+    display: none;
+}
+
+.sous-menu li:hover .sous2-menu {
+    display: block;
+}
+
+.sous-menu li .sous2-menu a {
+    display: block;
+    padding: 10px;
+    background-color: rgb(255, 65, 65);
+    color: #000;
+    text-decoration: none;
+}
+
+.sous-menu li .sous2-menu a:hover {
+    background: rgb(56, 113, 218);
+}
+
+/*.bandeau .menu{
+    position: relative; /*Pour placer les boutons horizontalement
+    display: flex;
+}
+
+.bandeau .menu li{
+    list-style: none; /*Pour ne pas afficher de point
+}
+
+.bandeau .menu li a{
+    display: block;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    padding: 8px 15px;
+    padding-right: 40px;
+    text-decoration: none;
+    width: 100%;
+    transition: 0.5s ease-in-out;
+}
+
+.bandeau .menu li a:active,
+.bandeau .menu li a:hover{
     background: rgb(56, 113, 218);
     color: rgb(0, 0, 0);
 }
@@ -109,8 +192,8 @@ nav .navigation li a:hover{
     display: none;
 }
 
-nav > ul li:hover .sous-menu{
-    display: block; /*affichage sous menu*/
+.bandeau > ul li:hover .sous-menu{
+    display: block; /*affichage sous menu
     height: fit-content;
     width: fit-content;
     margin-top: 11px;
@@ -118,15 +201,15 @@ nav > ul li:hover .sous-menu{
     border-top: 2px solid #ffffff;
 }
 
-nav > ul li .sous-menu li:hover .sous-menu-fruit{
-    display: block; /*affichage sous menu fruit*/
+.bandeau > ul li .sous-menu li:hover .sous-menu-fruit{
+    display: block; /*affichage sous menu fruit
     height: fit-content;
-    /*width: fit-content;*/
+    /*width: fit-content;
     float: left;
     border-right: 2px solid #ffffff;
-}
+}*/
 
-nav.sticky{
+.bandeau.sticky{
     position: fixed;
     top: 0;
     left: 0;

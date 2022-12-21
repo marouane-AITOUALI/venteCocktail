@@ -2,62 +2,85 @@
     include 'Donnees.inc.php';
 
     /*Création de la base de donnée*/
-    function query($link,$requete)
-    { 
-        $resultat=mysqli_query($link,$requete) or die("$requete : ".mysqli_error($link));
-        return($resultat);
-    }
 
-  
     $mysqli=mysqli_connect('127.0.0.1', 'root', '') or die("Erreur de connexion");
     $base="Cocktails";
-    $Sql="
-            DROP DATABASE IF EXISTS $base;
-            CREATE DATABASE $base;
-            USE $base;
-        
-            CREATE TABLE aliment (
-                nomAliment varchar(50) NOT NULL,
-                preparationAliment varchar(50) NOT NULL
-                PRIMARY KEY(nomAliment)
-            );
 
-            CREATE TABLE cocktail (
-                nomCocktail varchar(50) NOT NULL,
-                preparationCocktail varchar(50) NOT NULL,
-                ingredient varchar(50) NOT NULL,
-                liquide varchar(50) NOT NULL,
-                PRIMARY KEY(nomCocktail)
-            );
+    $requete = "
+        DROP DATABASE IF EXISTS $base;
+        CREATE DATABASE $base;
+        USE $base;
+    ";
+    $stmt = $mysqli->prepare($requete);
+    $stmt->execute();
 
-            CREATE TABLE utilisateur(
-                nom varchar(50) NOT NULL,
-                prenom varchar(50) NOT NULL,
-                adresseMail varchar(50) NOT NULL,
-                adresse varchar(50) NOT NULL,       
-                PRIMARY KEY (nom)
-            );
+    $requete = "
+        CREATE TABLE IF NOT EXISTS aliment (
+            nomAliment varchar(50) NOT NULL,
+            pereAliment varchar(50) NOT NULL
+            PRIMARY KEY(nomAliment)
+        );
+    ";
+    $stmt = $mysqli->prepare($requete);
+    $stmt->execute();
+    
+    $requete = "
+        CREATE TABLE IF NOT EXISTS cocktail (
+            nomCocktail varchar(50) NOT NULL,
+            preparationCocktail varchar(50) NOT NULL,
+            ingredient varchar(50) NOT NULL,
+            liquide varchar(50) NOT NULL,
+            PRIMARY KEY(nomCocktail)
+        );
+    ";
+    $stmt = $mysqli->prepare($requete);
+    $stmt->execute();
+   
+    $requete = "
+        CREATE TABLE IF NOT EXISTS utilisateur(
+            nom varchar(50) NOT NULL,
+            prenom varchar(50) NOT NULL,
+            login varchar(50) NOT NULL,
+            adresseMail varchar(50) NOT NULL,
+            adresse varchar(50) NOT NULL,       
+            PRIMARY KEY (login)
+        );
+    ";
+    $stmt = $mysqli->prepare($requete);
+    $stmt->execute();
 
-            CREATE TABLE panier(
-                login varchar(50) NOT NULL,
-                mdp varchar(50) NOT NULL,
-                nomCocktailsPanier varchar(50),
-                PRIMARY KEY(login)
-            );
+    $requete = "
+        CREATE TABLE IF NOT EXISTS panier(
+            loginP varchar(50) NOT NULL,
+            nomCocktailsP varchar(50),
+            dateAjout date,
+            PRIMARY KEY(loginP, nomCocktailP)
+        );
+    ";
+    $stmt = $mysqli->prepare($requete);
+    $stmt->execute();
 
-            CREATE TABLE liaison(
-                nomAliment
-                nomCocktail
-                mail
-                nomCocktailsPanier
-                PRIMARY KEY (mail),
-                FOREIGN KEY (nomAliment) REFERENCES ALIMENT(nomAliment),
-                FOREIGN KEY (nomCocktail) REFERENCES COCKTAIL(nomCocktail),
-                FOREIGN KEY (mail) REFERENCES UTILISATEUR(mail),
-                FOREIGN KEY (nomCocktailsPanier) REFERENCES PANIER(nomCocktailsPanier),
-            );
+    $requete = "
+        CREATE TABLE IF NOT EXISTS liaison(
+            nomAlimentL
+            nomCocktailL
+            PRIMARY KEY (nomAlimentL, nomCocktailL)  
+        );
+    ";
+    $stmt = $mysqli->prepare($requete);
+    $stmt->execute();
 
-    foreach(explode(';',$Sql) as $Requete) query($mysqli,$Requete);
+    
+    foreach ($Hierarchie as $nom => $alimentT){
+        if (isset($alimentT['super-categorie'])){
+            foreach ($alimentT['super-categorie'] as $cat => $pere){
+                $stmt = $mysqli->prepare("INSERT INTO Aliment(nomAliment, pereAliment) values $cat, $nom");
+                $stmt->bind_param("ss", $nom, $pere);
+                $stmt->execute();
+                mysqli_stmt_close($stmt);
+            }
+        }
+    }
 
     mysqli_close($mysqli);
 ?>

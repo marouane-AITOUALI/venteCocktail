@@ -1,5 +1,5 @@
 var navbar = document.getElementById("bandeau");
-var menu = document.getElementById("navigation");
+var menu = document.getElementById("menu");
 
 window.onscroll = function(){
     if (window.pageYOffset >= menu.offsetTop){
@@ -15,7 +15,7 @@ function reveal() {
       var windowHeight = window.innerHeight;
       var elementTop = reveals[i].getBoundingClientRect().top;
       var elementVisible = 150;
-  
+      
       if (elementTop < windowHeight - elementVisible) {
         reveals[i].classList.add("active");
       } else {
