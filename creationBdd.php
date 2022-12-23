@@ -33,10 +33,10 @@
         CREATE TABLE IF NOT EXISTS Cocktail (
             nomCocktail varchar(50) NOT NULL,
             preparationCocktail varchar(50) NOT NULL,
-            ingredient varchar(50) NOT NULL,
-            liquide varchar(50) NOT NULL,
+            ingredients varchar(50) NOT NULL,
+            nomAlimentsC varchar(50) NOT NULL,
             PRIMARY KEY(nomCocktail),
-            CONSTRAINT key_aliment FOREIGN KEY(ingredient) REFERENCES Aliment(nomAliment)
+            CONSTRAINT key_alimentC FOREIGN KEY(nomAlimentsC) REFERENCES Aliment(nomAliment)
         );
     ";
     $stmt = $mysqli->prepare($requete);
@@ -112,6 +112,15 @@
                 mysqli_stmt_close($stmt);
             }
         }
+    }
+
+    //Remplissage des cocktails
+    foreach ($Recettes as $tmp => $cocktail){
+        $string = implode('|', $cocktail[0]);
+        $stmt = $mysqli->prepare("INSERT INTO Cocktail(nomCocktail, preparationCocktail, ingredients, nomAlimentsC) values (?,?,?,?)");
+        $stmt->bind_param("ssss", $nom, $pere);
+        $stmt->execute();
+        mysqli_stmt_close($stmt);
     }
 
     mysqli_close($mysqli);

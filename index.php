@@ -78,9 +78,14 @@
                     <a href='#' id='boutonCompte'>$compte
                     <img src='./Ressources/logo_compte.png' alt='' class='imgLogoCompte'>
                     </a>
-                <ul>
-                <li><a href='login.php'>Se connecter</a></li>
-                <li><a href='#' onclick='session_unset(); session_destroy();'>Se déconnecter</a></li>
+                <ul>";
+
+                if (!isset($_SESSION['login'])){
+                    echo "<li><a href='login.php'>Se connecter</a></li>";
+                }
+                
+                echo "
+                <li><a href='logout.php'>Se déconnecter</a></li>
                 </li>
                 </ul>
                 </li><!--
@@ -93,20 +98,6 @@
 
                 echo "</ul>";
             echo "</nav>";
-
-            /*function deconnect(){
-                echo "<br><br><br><br><br><p>qepspioqhjsgihjqqziogjhzegjozeiorpgjpozeijgpoizjgopegjoprgjproegjergj</p>";
-                if (isset($_SESSION['login'])){
-                    echo "testsgb";
-                    session_unset();
-                    session_destroy();
-                    header("Location: index.php");
-                    exit;
-                }
-                return false;
-            }*/
-
-        //$sql->close();
         ?>  
 
     </div>
