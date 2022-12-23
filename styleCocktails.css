@@ -9,15 +9,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.bandeau{
-    position: absolute; 
-    top: 0;
-    width: 100%;
-    height: auto;
-    background: transparent;
-    z-index: 2;
-}
-
 .bandeau::before{
     content: '';
     position: relative;
@@ -61,6 +52,7 @@ html {
     justify-content: space-between;
     text-align: left;
     background-color: rgb(255, 65, 65);
+    z-index: 10;
 }
 
 @font-face {
@@ -96,7 +88,7 @@ nav ul li {
     display:inline-block;
     position: relative;
 }
- 
+
 nav li li {
     display: list-item;
 }
@@ -105,7 +97,7 @@ nav li li {
 nav ul ul, nav li:hover ul ul {
     position:absolute;
     left:-999em;
-    width: fit-content;
+    width: 100%;
 }
 
 /*Sous menu 1*/
@@ -138,6 +130,7 @@ nav a {
  
 nav a:hover{
    background: rgb(56, 113, 218);
+   transition: 0.5s ease-in-out;
 }
  
 nav li li a {
@@ -147,27 +140,29 @@ nav li li a {
 /*Sous menu*/
 nav li li:hover ul {
     top:0;
-    left:-129%; /*-110 permet de placer le sous menu à gauche*/
+    left:auto; /*-110 permet de placer le sous menu à gauche*/
+    right: 100%;
     border-right: 2px solid #ffffff; /*BOrdure sur la gauche*/
 }
 
 /*Sous menu 1*/
 nav li li li:hover ul {
     top:0;
-    left:-110%; /*-110 permet de placer le sous menu à gauche*/
+    left:auto; /*-110 permet de placer le sous menu à gauche*/
+    right: 100%;
     border-right: 2px solid #ffffff; /*BOrdure sur la gauche*/
 }
 
 /*Sous menu 2*/
 nav li li li:hover ul {
     top:0;
-    left:-110%; /*-110 permet de placer le sous menu à gauche*/
+    left:auto; /*-110 permet de placer le sous menu à gauche*/
+    right: 100%;
     border-right: 2px solid #ffffff; /*BOrdure sur la gauche*/
 }
 
 
 /*Bandeau fixe*/
-
 .bandeau.sticky{
     position: fixed;
     top: 0;
@@ -176,7 +171,6 @@ nav li li li:hover ul {
 
 
 /*Recherche*/
-
 .recherche{
     position: absolute;
     left: 40%;
@@ -188,10 +182,9 @@ nav li li li:hover ul {
 
 
 /*Contenu*/
-
 .contenu{
     z-index: 1;
-    margin-top: 4%;
+    margin-top: 2%;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     padding: 10px;

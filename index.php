@@ -4,6 +4,7 @@
     if (isset($_SESSION['login'])){
         $compte = $_SESSION['login'];
     }
+    $alimentMenu = $_GET['aliment'];
 ?>
 
 <!DOCTYPE html>
@@ -35,13 +36,13 @@
 
 
             // Output the menu and submenus as an HTML list
-            echo "<nav>";
+            echo "<nav id='menu'>";
                 echo "<ul>";
                     echo "<li><a href='#'>Aliment ▼</a><ul>";
                     foreach ($menu as $menuItem) {
                         //echo "Item : ", $menuItem['nomAliment'], "<br>";
                         if ($menuItem['pereAliment'] === "Aliment"){ //On affiche le premier menu
-                            echo "<li><a href='#'>◀ " . $menuItem['nomAliment'] . "</a>";
+                            echo "<li><a href='index.php?aliment=" . $menuItem['nomAliment'] . "'>◀ " . $menuItem['nomAliment'] . "</a>";
                             // Query the database to retrieve the submenu items for the current menu item
                             $stmt = $sql->prepare("SELECT * FROM Aliment WHERE pereAliment = ?");
                             $stmt->execute([$menuItem['nomAliment']]);
@@ -50,7 +51,7 @@
                             if (!empty($subMenu)) {
                                 echo "<ul>";
                                 foreach ($subMenu as $subMenuItem) {
-                                    echo "<li><a href='#'>" . $subMenuItem['nomAliment'] . "</a>";
+                                    echo "<li><a href='index.php?aliment=" . $subMenuItem['nomAliment'] . "'>" . $subMenuItem['nomAliment'] . "</a>";
                                     echo "<ul>";
 
                                     $stmt = $sql->prepare("SELECT * FROM Aliment WHERE pereAliment = ?"); //Sous menu 1
@@ -60,7 +61,7 @@
                                     if (!empty($sub2Menu)) {
                                         foreach ($sub2Menu as $sub2MenuItem) {
                                             if ($sub2MenuItem['pereAliment'] === $subMenuItem['nomAliment']){
-                                                echo "<li><a href='#'>" . $sub2MenuItem['nomAliment'] . "</a></li>";
+                                                echo "<li><a href='index.php?aliment=" . $sub2MenuItem['nomAliment'] . "'>" . $sub2MenuItem['nomAliment'] . "</a></li>";
                                             }
                                         }
                                     }
@@ -82,10 +83,11 @@
 
                 if (!isset($_SESSION['login'])){
                     echo "<li><a href='login.php'>Se connecter</a></li>";
+                } else {
+                    echo "<li><a href='logout.php'>Se déconnecter</a></li>";
                 }
                 
                 echo "
-                <li><a href='logout.php'>Se déconnecter</a></li>
                 </li>
                 </ul>
                 </li><!--
@@ -104,365 +106,73 @@
 
     <div class="contenu">  
 
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Builder
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
+        <?php
+            //Affichage des cocktails à partir de la base de données
+            include 'creationBdd.php';
+            $sql = new PDO("mysql:host=127.0.0.1;dbname=Cocktails","root","");
 
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Black_velvet.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Black Velvet
-                <li>Fraise</li>
-                <li>Limonade</li>
-            </div>
-        </div>
+        $stmt = $sql->prepare("SELECT * FROM Cocktail WHERE pereAliment = '" . ); //Gerer les menu -> contient tel aliment
+            $stmt->execute();
+            $res = $stmt->fetchAll();
+            foreach($res as $tmp => $cocktail){
+                $photo = "Photos/defaut";//mettre un _ pour certains noms
+                $string = str_replace(" ", "_", stripAccents($cocktail['nomCocktail']));
+                if (file_exists("Photos/". $string . ".jpg")){
+                    $photo = "Photos/" . $string . ".jpg";
+                }
+                echo "
+                    <div class='grid-item1 reveal'>
+                    <a class='a-img-txt' href='element.php?cocktail=" . $cocktail['nomCocktail'] . "'>
+                        <img class='imgVignette' src='$photo'  alt='En savoir plus'>
+                        <span class='a-txt'>En savoir plus</span>
+                    </a>
+                    <div class='text'><h2>".
+                    $cocktail['nomCocktail']
+                    ."</h2>";
+                        foreach(explode('|', $cocktail['nomAlimentsC']) as $aliment){
+                            echo "
+                                <li>$aliment</li>
+                            ";
+                        }
+                echo "        
+                    </div>
+                </div>  
+                ";    
+            }
 
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Bora_bora.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Bora Bora
-                <li>Biere</li>
-                <li>Test</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Bloody_mary.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Bloody mary
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Coconut_kiss.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Coconut kiss
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Caipirinha.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Caipirinha
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Mojito.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Mojito
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Cuba_libre.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Cuba libre
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Le_vandetta.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Le vandetta
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Frosty_lime.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Frosty lime
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Sangria_sans_alcool.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Sangria sans alcool
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Screwdriver.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Screwdriver
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Shoot_up.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Shoot up
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Raifortissimo.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Raifortissimo
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Tipunch.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Tipunch
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Builder.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Builder
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Black_velvet.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Black Velvet
-                <li>Fraise</li>
-                <li>Limonade</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Bora_bora.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Bora Bora
-                <li>Biere</li>
-                <li>Test</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Bloody_mary.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Bloody mary
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Coconut_kiss.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Coconut kiss
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Caipirinha.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Caipirinha
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Mojito.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Mojito
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Cuba_libre.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Cuba libre
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Le_vandetta.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Le vandetta
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Frosty_lime.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Frosty lime
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Sangria_sans_alcool.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Sangria sans alcool
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Screwdriver.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Screwdriver
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Shoot_up.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Shoot up
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Raifortissimo.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Raifortissimo
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
-
-        <div class="grid-item1 reveal">
-            <a class="a-img-txt" href="element.php">
-                <img class="imgVignette" src="Photos/Tipunch.jpg"  alt="En savoir plus">
-                <span class="a-txt">En savoir plus</span>
-            </a>
-            <div class="text">
-                Cocktail Tipunch
-                <li>Biere</li>
-                <li>Champagne</li>
-            </div>
-        </div>
+            function stripAccents($texte) {
+                $texte = str_replace(
+                    array(
+                        'à', 'â', 'ä', 'á', 'ã', 'å',
+                        'î', 'ï', 'ì', 'í', 
+                        'ô', 'ö', 'ò', 'ó', 'õ', 'ø', 
+                        'ù', 'û', 'ü', 'ú', 
+                        'é', 'è', 'ê', 'ë', 
+                        'ç', 'ÿ', 'ñ',
+                        'À', 'Â', 'Ä', 'Á', 'Ã', 'Å',
+                        'Î', 'Ï', 'Ì', 'Í', 
+                        'Ô', 'Ö', 'Ò', 'Ó', 'Õ', 'Ø', 
+                        'Ù', 'Û', 'Ü', 'Ú', 
+                        'É', 'È', 'Ê', 'Ë', 
+                        'Ç', 'Ÿ', 'Ñ', '\''
+                    ),
+                    array(
+                        'a', 'a', 'a', 'a', 'a', 'a', 
+                        'i', 'i', 'i', 'i', 
+                        'o', 'o', 'o', 'o', 'o', 'o', 
+                        'u', 'u', 'u', 'u', 
+                        'e', 'e', 'e', 'e', 
+                        'c', 'y', 'n', 
+                        'A', 'A', 'A', 'A', 'A', 'A', 
+                        'I', 'I', 'I', 'I', 
+                        'O', 'O', 'O', 'O', 'O', 'O', 
+                        'U', 'U', 'U', 'U', 
+                        'E', 'E', 'E', 'E', 
+                        'C', 'Y', 'N', ''
+                    ),$texte);
+                return $texte;
+            }
+        ?>
 
     </div>
 

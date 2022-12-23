@@ -5,7 +5,7 @@
 
     $mysqli=mysqli_connect('127.0.0.1', 'root', '') or die("Erreur de connexion");
     $base="Cocktails";
-    echo "<script>console.log('Test d'affichage');</script>";
+
     $requete = "CREATE DATABASE IF NOT EXISTS $base";
     if ($mysqli->query($requete) === TRUE) {
         echo "<script>console.log('Base de données créée correctement\n');</script>";
@@ -31,10 +31,10 @@
     
     $requete = "
         CREATE TABLE IF NOT EXISTS Cocktail (
-            nomCocktail varchar(50) NOT NULL,
-            preparationCocktail varchar(50) NOT NULL,
-            ingredients varchar(50) NOT NULL,
-            nomAlimentsC varchar(50) NOT NULL,
+            nomCocktail varchar(100) NOT NULL,
+            preparationCocktail varchar(1000) NOT NULL,
+            ingredients varchar(800) NOT NULL,
+            nomAlimentsC varchar(200) NOT NULL,
             PRIMARY KEY(nomCocktail),
             CONSTRAINT key_alimentC FOREIGN KEY(nomAlimentsC) REFERENCES Aliment(nomAliment)
         );
@@ -59,22 +59,6 @@
     $stmt->execute();
 
     $requete = "
-        CREATE TABLE IF NOT EXISTS Panier(
-            loginP varchar(50),
-            nomCocktailsP varchar(50),
-            dateAjout date,
-            PRIMARY KEY(loginP, nomCocktailP),
-            CONSTRAINT key_login FOREIGN KEY(loginP) REFERENCES Utilisateur(login),
-            CONSTRAINT key_cocktail FOREIGN KEY(nomCocktailP) REFERENCES Cocktail(nomCocktail)
-        );
-    ";
-    $stmt = $mysqli->prepare($requete);
-    if(!$stmt){
-        echo "<script>console.log('Préparation ratée : (', $mysqli->errno,') ',$mysqli->error,'\n');</script>";
-    }
-    $stmt->execute();
-
-    $requete = "
         CREATE TABLE IF NOT EXISTS Liaison(
             nomAlimentL varchar(50),
             nomCocktailL varchar(50),
@@ -88,6 +72,23 @@
         echo "<script>console.log('Préparation ratée : (', $mysqli->errno,') ',$mysqli->error,'\n');</script>";
     }
     $stmt->execute();
+
+    $requete = "
+        CREATE TABLE IF NOT EXISTS Panier(
+            loginP varchar(50),
+            nomCocktailsP varchar(100),
+            dateAjout date,
+            PRIMARY KEY(loginP, nomCocktailP),
+            CONSTRAINT key_login FOREIGN KEY(loginP) REFERENCES Utilisateur(login),
+            CONSTRAINT key_cocktail FOREIGN KEY(nomCocktailP) REFERENCES Cocktail(nomCocktail)
+        );
+    ";
+    $stmt = $mysqli->prepare($requete);
+    if(!$stmt){
+        echo "<script>console.log('Préparation ratée : (', $mysqli->errno,') ',$mysqli->error,'\n');</script>";
+    }
+    $stmt->execute();
+    //echo "<script>console.log('test : ". $mysqli->error ."')</script>";
 
 
     //Remplissage d'utilisateur test
@@ -116,9 +117,9 @@
 
     //Remplissage des cocktails
     foreach ($Recettes as $tmp => $cocktail){
-        $string = implode('|', $cocktail[0]);
+        $string = implode('|', $cocktail['index']);
         $stmt = $mysqli->prepare("INSERT INTO Cocktail(nomCocktail, preparationCocktail, ingredients, nomAlimentsC) values (?,?,?,?)");
-        $stmt->bind_param("ssss", $nom, $pere);
+        $stmt->bind_param("ssss", $cocktail['titre'], $cocktail['ingredients'], $cocktail['preparation'], $string);
         $stmt->execute();
         mysqli_stmt_close($stmt);
     }
