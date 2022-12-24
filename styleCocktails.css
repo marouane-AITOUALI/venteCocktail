@@ -75,7 +75,7 @@ html {
 nav {
     text-align: left;
     padding: 8px 15px;
-    width: 26%; /*Pour régler le placement des menus*/
+    width: 28%; /*Pour régler le placement des menus*/
 }
 
 nav ul {
@@ -171,14 +171,37 @@ nav li li li:hover ul {
 
 
 /*Recherche*/
-.recherche{
+.groupe-recherche{
     position: absolute;
-    left: 40%;
-    height: auto;
+    display: block;
     width: 20%;
-    padding: 10px;
+    left: 40%;
+    height: 60px;
+}
+
+.recherche{
     border-radius: 20px;
-  }
+    height: 70%;
+    width: 100%;
+    padding-left: 5px;
+    font-size: 18px;
+}
+
+.resultat{
+    display: none;
+    height: auto;
+    width: auto;
+    background-color: #ffffff;
+    color: black;
+    padding-left: 5px;
+    font-size: 18px;
+    list-style: none;
+}
+
+.resultat li:hover{
+    background-color: #494ee8;
+    color: #ffffff;
+}
 
 
 /*Contenu*/

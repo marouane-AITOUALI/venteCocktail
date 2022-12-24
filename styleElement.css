@@ -73,7 +73,7 @@ html {
 nav {
     text-align: left;
     padding: 8px 15px;
-    width: 16%; /*Pour régler le placement des menus*/
+    width: 17%; /*Pour régler le placement des menus*/
 }
 
 nav ul {
@@ -143,6 +143,7 @@ nav li li:hover ul {
     padding-top: 2%;
     position: relative;
     display: flex;
+    height: 100%;
 }
 
 .texte{

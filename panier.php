@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    $compte = "Compte";
+    if (isset($_SESSION['login'])){
+        $compte = $_SESSION['login'];
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,40 +15,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cocktails</title>
 </head>
-<body>
-    <div class="header">
-        <nav id="bandeau">
+<body onload="reveal()">
+    <div class="bandeau">
+
         <img src="./Ressources/logo_cocktail.png" alt="" class="imgLogoCocktail">
             <a href="index.php" class="logo">COCKTAILS</a>
 
-            <input id="recherche" class="recherche" onkeyup="" type="text"
-                name="recherche" placeholder="Rechercher dans le site">
+        <div class="groupe-recherche">
+            <input id="recherche" class="recherche" onkeyup="search()" type="search" onkeydown="applykeydown(event)" onkeyup="applykeyup(event)"
+                name="recherche" placeholder="Rechercher dans le panier" autocomplete="off">
 
-                <ul id="navigation" class="navigation">
-                    <li>
-                        <a href="#" id="boutonCocktails">Aliment ▼</a>
-                        <ul class="sous-menu">
-                            <li><a href="#">Fruit</a></li>
-                            <li><a href="#">Assaisonnement</a></li>
-                            <li><a href="#">Liquide</a></li>
-                            <li><a href="#">Noix et graine</a></li>
-                            <li><a href="#">Oeuf</a></li>
-                            <li><a href="#">Aliments divers</a></li>
-                            <li><a href="#">Produit laitier</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" id="boutonCompte">Compte
-                            <img src="./Ressources/logo_compte.png" alt="" class="imgLogoCompte">
-                        </a>
-                        <ul class="sous-menu">
-                            <li><a href="#">Se connecter</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" id="boutonPanier">Panier
-                        <img src="./Ressources/logo_like.png" alt="" class="imgLogoLike">
-                    </a></li>
-                </ul>
+            <ul id="resultat" class="resultat" onclick="applyClick(event)" tabindex="0" onkeydown="applykeydown(event)" onkeyup="applykeyup(event)"></ul>
+        </div> 
+
+        <nav id="menu">
+            <ul>
+                <li>
+                    <a href='#' id='boutonCompte'><?php echo $compte ?>
+                        <img src='./Ressources/logo_compte.png' alt='' class='imgLogoCompte'></a>
+                    <ul>    
+                        <?php
+                            if (!isset($_SESSION['login'])){
+                                echo "<li><a href='login.php'>Se connecter</a></li>";
+                            } else {
+                                echo "<li><a href='logout.php'>Se déconnecter</a></li>";
+                            }
+                        ?>   
+                    </ul>     
+                </li>
+            </ul>
         </nav>
     </div>
 

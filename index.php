@@ -4,7 +4,15 @@
     if (isset($_SESSION['login'])){
         $compte = $_SESSION['login'];
     }
-    $alimentMenu = $_GET['aliment'];
+
+    $alimentMenu = "";
+    if (isset($_GET['aliment'])){
+        $alimentMenu = $_GET['aliment'];
+    }
+
+    if (isset($_GET['recherche'])){
+        $alimentMenu = $_GET['recherche'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +25,121 @@
     <title>Cocktails</title>
 </head>
 
-<body onload="reveal()">
+<body onload="reveal()" onclick="loseFocus()">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
     <div id="bandeau" class="bandeau">
         <img src="./Ressources/logo_cocktail.png" alt="" class="imgLogoCocktail">
-            <a href="#" class="logo">COCKTAILS</a>
+            <a href="index.php" class="logo">COCKTAILS</a>
 
-        <input id="recherche" class="recherche" onkeyup="" type="text"
-            name="recherche" placeholder="Rechercher dans le site">
+        <div class="groupe-recherche">
+            <input id="recherche" class="recherche" onkeyup="search()" type="search" onkeydown="applykeydown(event)" onkeyup="applykeyup(event)"
+                name="recherche" placeholder="Rechercher dans le site" autocomplete="off">
+
+            <ul id="resultat" class="resultat" onclick="applyClick(event)" tabindex="0" onkeydown="applykeydown(event)" onkeyup="applykeyup(event)"></ul>
+        </div>    
+
+        <script>
+            function search() {
+                //Ajax
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        //Mise à jour des résultats            
+                        document.getElementById("resultat").innerHTML = supprimerDoublons(this.responseText);
+
+                        if (this.responseText != ""){
+                            document.getElementById("resultat").style.display = "block";
+                        }
+                    }
+                };
+                xhttp.open("POST", "recherche.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("recherche=" + document.getElementById("recherche").value);
+            }
+
+            function supprimerDoublons(contenu){
+                var liElements = contenu.split("</li>"); //Diviser la chaîne en un tableau encadrées par <li> et </li>
+
+                var sansDoublons = liElements.filter(function(liElement, index, self) { //Suppression des doublons
+                    return index === self.indexOf(liElement);
+                });
+
+                var resultat = sansDoublons.join("</li>"); //Reassembler la chaine
+
+                //console.log("Res : " + resultat);
+                return resultat;
+            }
+
+            function applyClick(event){
+                var lis = document.getElementById('resultat').getElementsByTagName('li');
+                loseFocus();
+                refreshPage(lis[selectedIndex].textContent);
+            }
+
+            var selectedIndex = -1; // Index de l'option sélectionnée -1 si aucun
+
+            function applykeydown(event) {
+
+                // Sélection de l'élément suivant avec la flèche du haut
+                if (event.keyCode == 38) {
+                    resultat.focus();
+                    if (selectedIndex > 0) {
+                        selectedIndex--;
+                    }
+                }
+                // Sélection de l'élément précédent avec la flèche du bas
+                else if (event.keyCode == 40) {
+                    resultat.focus();
+                    if (selectedIndex < document.getElementById('resultat').getElementsByTagName('li').length - 1) {
+                        selectedIndex++;
+                    }
+                }
+            }
+
+            function applykeyup(event) {
+                var lis = document.getElementById('resultat').getElementsByTagName('li');
+
+                // Validation de la sélection avec la touche Entrée
+                if (event.keyCode == 13) {
+                    recherche.focus();
+                    if (selectedIndex >= 0) {
+                        //Actualisation de la page
+                        loseFocus();
+                        refreshPage(lis[selectedIndex].textContent);
+                    }
+                }
+
+                // Sélection de l'élément cliqué
+                for (var i = 0; i < document.getElementById('resultat').getElementsByTagName('li').length; i++){
+                    lis[i].style.backgroundColor = "white";
+                    lis[i].style.color = "black";
+                    if (i == selectedIndex){
+                        lis[selectedIndex].style.backgroundColor = "#494ee8";
+                        lis[selectedIndex].style.color = "white";
+                    }
+                }
+            }
+
+            function loseFocus(){
+                document.getElementById("resultat").style.display = "none";
+            }
+
+            function refreshPage(value) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // Mise à jour de la page avec les données reçues
+                        document.getElementById("recherche").value = "";
+                        document.getElementById("contenu").innerHTML = this.responseText;
+                        reveal();
+                    }
+                };
+                xhttp.open("POST", "refresh.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("recherche=" + value);
+            }
+        </script>   
 
         <?php
             include 'creationBdd.php';
@@ -104,16 +220,17 @@
 
     </div>
 
-    <div class="contenu">  
+    <div id="contenu" class="contenu">  
 
         <?php
             //Affichage des cocktails à partir de la base de données
             include 'creationBdd.php';
             $sql = new PDO("mysql:host=127.0.0.1;dbname=Cocktails","root","");
 
-        $stmt = $sql->prepare("SELECT * FROM Cocktail WHERE pereAliment = '" . ); //Gerer les menu -> contient tel aliment
+            $stmt = $sql->prepare("SELECT * FROM Cocktail WHERE nomAlimentsC LIKE '%" . $alimentMenu . "%'"); //Gerer les menu -> contient tel aliment ---A REVOIR---
             $stmt->execute();
             $res = $stmt->fetchAll();
+
             foreach($res as $tmp => $cocktail){
                 $photo = "Photos/defaut";//mettre un _ pour certains noms
                 $string = str_replace(" ", "_", stripAccents($cocktail['nomCocktail']));
@@ -137,7 +254,7 @@
                 echo "        
                     </div>
                 </div>  
-                ";    
+                ";
             }
 
             function stripAccents($texte) {

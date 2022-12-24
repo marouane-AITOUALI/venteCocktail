@@ -9,17 +9,7 @@ html {
     scroll-behavior: smooth;
 }
 
-.header{
-    position: relative; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    background: transparent;
-    z-index: 2;
-}
-
-.header::before{
+.bandeau::before{
     content: '';
     position: relative;
     top: 0;
@@ -28,37 +18,40 @@ html {
     height: 100%;
 }
 
-.imgLogoCocktail{
+.bandeau{
     position: relative;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    background-color: rgb(255, 65, 65);
+}
+
+.imgLogoCocktail{
+    position: absolute;
     max-width : 2%;
-    height : 100%;
+    height : auto;
+    margin-top: -3px;
+    margin-left: 10px;
 }
 
 .imgLogoCompte{
     position: absolute;
-    margin-left: 1%;
-    max-width : 6%;
+    margin-top: 2px;
+    margin-left: 5px;
+    max-width : 15%;
     height : auto;
 }
 
 .imgLogoLike{
     position: absolute;
-    margin-left: 1%;
-    max-width : 6%;
+    margin-top: 4px;
+    margin-left: 5px;
+    max-width : 15%;
     height : auto;
-}
-
-nav{
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 10px;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-    background-color: rgb(255, 65, 65);
 }
 
 @font-face {
@@ -66,7 +59,7 @@ nav{
     src: url(Ressources/Indited.ttf);
 }
 
-nav .logo{
+.bandeau .logo{
     position: absolute; /*Met le text tout à gauche*/
     left: 3%;
     font-size: 300%;
@@ -75,42 +68,71 @@ nav .logo{
     font-family: myFont;
 }
 
-nav .navigation{
-    position: relative; /*Pour placer les boutons horizontalement*/
-    display: flex;
-}
 
-nav .navigation li{
-    list-style: none; /*Pour ne pas afficher de point*/
-}
+/*Menu*/
 
-nav .navigation li a{
-    display: inline-block;
-    color: rgb(0, 0, 0);
-    font-weight: 400;
-    margin-left: 10px;
+nav {
+    text-align: left;
     padding: 8px 15px;
-    padding-right: 40px;
-    border-radius: 5px;
+    width: 9%; /*Pour régler le placement des menus*/
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ 
+nav ul li {
+    display:inline-block;
+    position: relative;
+}
+
+nav li li {
+    display: list-item;
+}
+ 
+/*Sous menu*/
+nav ul ul, nav li:hover ul ul {
+    position:absolute;
+    left:-999em;
+    width: fit-content;
+}
+
+nav li:hover ul {
+    left:auto;
+    padding-top: 16px; /*Décaler sous-menu vers le bas*/
+    width: fit-content; /*Fixe la largeur par rapport à celle du dessus*/
+}
+
+nav a {
+    display:block;
+    padding:3px 30px;
+    background: rgb(255, 65, 65);
+    color:rgb(0, 0, 0);
     text-decoration: none;
+}
+ 
+nav a:hover{
     transition: 0.5s ease-in-out;
-}
-
-nav .navigation li a:active,
-nav .navigation li a:hover{
     background: rgb(56, 113, 218);
-    color: rgb(0, 0, 0);
+}
+ 
+nav li li a {
+   padding: 8px 15px;
+}
+ 
+/*Sous menu*/
+nav li li:hover ul {
+    top:0;
+    left:-129%; /*-110 permet de placer le sous menu à gauche*/
+    border-right: 2px solid #ffffff; /*BOrdure sur la gauche*/
 }
 
-.sous-menu{
-    display: none;
-}
 
-nav > ul li:hover .sous-menu{
-    display: flex; /*affichage sous menu*/
-}
+/*Bandeau fixe*/
 
-nav.sticky{
+.bandeau.sticky{
     position: fixed;
     top: 0;
     left: 0;
@@ -118,14 +140,36 @@ nav.sticky{
 
 
 /*Recherche*/
+.groupe-recherche{
+    position: absolute;
+    display: block;
+    width: 20%;
+    left: 40%;
+    height: 60px;
+}
 
 .recherche{
-    position: absolute;
-    left: 40%;
-    height: auto;
-    width: 20%;
-    padding: 10px;
     border-radius: 20px;
+    height: 70%;
+    width: 100%;
+    padding-left: 5px;
+    font-size: 18px;
+}
+
+.resultat{
+    display: none;
+    height: auto;
+    width: auto;
+    background-color: #ffffff;
+    color: black;
+    padding-left: 5px;
+    font-size: 18px;
+    list-style: none;
+}
+
+.resultat li:hover{
+    background-color: #494ee8;
+    color: #ffffff;
 }
 
 
@@ -149,15 +193,16 @@ nav.sticky{
     display: flex;
     align-items: center;
     justify-content: left;
-    border: solid;
     border-radius: 5px;
     width: 100%;
-    background: rgb(255, 224, 224);
+    background: rgb(255, 238, 238);
+    box-shadow: 1px 1px 12px black;
 }
 
 .imgVignette{
     height: 243px;
     width: auto;
+    border-radius: 5px;
 }
 
 .text{

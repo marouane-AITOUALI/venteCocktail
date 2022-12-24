@@ -1,5 +1,5 @@
 var navbar = document.getElementById("bandeau");
-var menu = document.getElementById("navigation");
+var menu = document.getElementById("menu");
 
 window.onscroll = function(){
     if (window.pageYOffset >= menu.offsetTop){

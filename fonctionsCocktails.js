@@ -24,3 +24,10 @@ function reveal() {
     }
 }
 window.addEventListener("scroll", reveal);
+
+document.addEventListener("keydown", function(event) {
+  //Desactiver les flèches directrices
+  if (event.keyCode == 38 || event.keyCode == 40) {
+    event.preventDefault();
+  }
+});

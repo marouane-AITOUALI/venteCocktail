@@ -8,7 +8,7 @@
 
     $requete = "CREATE DATABASE IF NOT EXISTS $base";
     if ($mysqli->query($requete) === TRUE) {
-        echo "<script>console.log('Base de données créée correctement\n');</script>";
+        echo "<script>console.log('Base de données créée correctement\n');</script>\n";
     } else {
         echo "<script>console.log('Erreur lors de la création de la base de données : ' , $mysqli->error , '\n');</script>";
     }

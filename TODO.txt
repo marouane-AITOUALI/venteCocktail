@@ -1,4 +1,4 @@
--Revoir image deformée element.php
 -Revoir menu aliment, si plusieurs pere alors affiche un seul pere
 -Rajouter un sous menu
 -Table utilisateur -> ajouter nom, prenom, sexe, numTel, date naissance, adresse(adresse code postal, ville), e-mail
+-Supprimer doublons barre de recherche
