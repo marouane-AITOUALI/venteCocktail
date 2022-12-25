@@ -62,6 +62,7 @@
                 <input type="submit" id='submit' value='LOGIN' >
 
                 <a href="index.php">Retour à l'accueil</a>
+                <a class="lien" href="signup.php">Créer un compte</a>
             </form>
         </div>
 

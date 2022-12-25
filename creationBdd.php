@@ -46,11 +46,20 @@
     $stmt->execute();
    
     $requete = "
-    CREATE TABLE IF NOT EXISTS Utilisateur(
+        CREATE TABLE IF NOT EXISTS Utilisateur(
             login varchar(50) NOT NULL,
-            mdp varchar(50) NOT NULL,    
+            mdp varchar(50) NOT NULL,
+            nom varchar(50) NOT NULL,
+            prenom varchar(50) NOT NULL,
+            sexe char(1) NOT NULL,
+            numTel varchar(10) NOT NULL,
+            dateNaissance varchar(50) NOT NULL,
+            mail varchar(50) NOT NULL,
+            adresse varchar(50) NOT NULL,
+            codePostal varchar(5),
+            ville varchar(50) NOT NULL,    
             PRIMARY KEY (login)
-        );
+        );    
     ";
     $stmt = $mysqli->prepare($requete);
     if(!$stmt){
@@ -75,9 +84,9 @@
 
     $requete = "
         CREATE TABLE IF NOT EXISTS Panier(
-            loginP varchar(50),
-            nomCocktailsP varchar(100),
-            dateAjout date,
+            loginP varchar(50) NOT NULL,
+            nomCocktailP varchar(100) NOT NULL,
+            dateAjout date NOT NULL,
             PRIMARY KEY(loginP, nomCocktailP),
             CONSTRAINT key_login FOREIGN KEY(loginP) REFERENCES Utilisateur(login),
             CONSTRAINT key_cocktail FOREIGN KEY(nomCocktailP) REFERENCES Cocktail(nomCocktail)
@@ -88,17 +97,25 @@
         echo "<script>console.log('Préparation ratée : (', $mysqli->errno,') ',$mysqli->error,'\n');</script>";
     }
     $stmt->execute();
-    //echo "<script>console.log('test : ". $mysqli->error ."')</script>";
 
 
     //Remplissage d'utilisateur test
     $login = "sandy";
     $mdp = "test";
-    $stmt = $mysqli->prepare("INSERT INTO Utilisateur(login, mdp) values (?,?)");
+    $nom = "Gehin";
+    $prenom = "Sandy";
+    $sexe = "h";
+    $tel  = "0623329011";
+    $date = "22/05/2002";
+    $mail = "yoferrari3@gmail.com";
+    $adresse = "27 route de cheneau";
+    $code = "88120";
+    $ville = "Le Syndicat";
+    $stmt = $mysqli->prepare("INSERT INTO Utilisateur(login, mdp, nom, prenom, sexe, numTel, dateNaissance, mail, adresse, codePostal, ville) values (?,?,?,?,?,?,?,?,?,?,?)");
     if(!$stmt){
         echo "<script>console.log('Préparation ratée : (', $mysqli->errno,') ',$mysqli->error,'\n');</script>";
     }
-    $stmt->bind_param("ss", $login, $mdp);
+    $stmt->bind_param("ssssssissss", $login, $mdp, $nom, $prenom, $sexe, $tel, $date, $mail, $adresse, $code, $ville);
     $stmt->execute();
     mysqli_stmt_close($stmt);
     

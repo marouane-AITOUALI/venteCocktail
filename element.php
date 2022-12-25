@@ -129,10 +129,12 @@
             $mysqli = mysqli_connect('127.0.0.1', 'root', '');
             $mysqli->query("USE Cocktails");
             if(isset($_POST['boutonAjouterPanier'])){
-                $stmt = $mysqli->prepare("INSERT INTO Panier(loginP, nomCocktailsP, dateAjout) values (?,?,?)");
-                $null = null;
-                $stmt->bind_param("ssi", $compte, $_POST['nomCocktail'], $null);
+                $stmt = $mysqli->prepare("INSERT INTO Panier(loginP, nomCocktailP, dateAjout) values (?,?,NOW())");
+                $stmt->bind_param("ss", $compte, $_GET['cocktail']);
                 $stmt->execute();
+                if(!$stmt){
+                    echo "<script>console.log('Insertion ratée : (', $mysqli->errno,') ',$mysqli->error,'\n');</script>";
+                }
                 $stmt->close();
             }
             mysqli_close($mysqli);
