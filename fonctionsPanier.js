@@ -24,3 +24,19 @@ function reveal() {
     }
 }
 window.addEventListener("scroll", reveal);
+
+function removeItem(element){
+    var name = element.getAttribute('name');
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          // Mise à jour de la page avec les données reçues
+          document.getElementById("contenu").innerHTML = this.responseText;
+          reveal();
+      }
+    };
+    xhttp.open("POST", "retirer.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("cocktail=" + name);
+}

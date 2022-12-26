@@ -3,3 +3,4 @@
 -Table utilisateur -> ajouter nom, prenom, sexe, numTel, date naissance, adresse(adresse code postal, ville), e-mail
 -Supprimer doublons barre de recherche
 -Rajouter des verifications dans le formulaire de creeation de compte
+-Revoi Ti-Punch -> affichage dans index marche pas

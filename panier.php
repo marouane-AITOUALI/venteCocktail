@@ -149,7 +149,7 @@
         </nav>
     </div>
 
-    <div class="contenu reveal">
+    <div id="contenu" class="contenu reveal">
 
         <?php
             include 'creationBdd.php';
@@ -181,9 +181,10 @@
                                     <li>$aliment</li>
                                 ";
                             }
-
+                        
+                        $str = $cocktail['nomCocktail'];
                         echo "</div>
-                        <a id='boutonRetirer' href='retirer.php?cocktail=" . $cocktail['nomCocktail'] . "' class='boutonRetirer'>Retirer</a>
+                        <a id='boutonRetirer' name='$str' href='#' onClick='removeItem(this)' class='boutonRetirer'>Retirer</a>
                     </div>
                     ";
                 }
